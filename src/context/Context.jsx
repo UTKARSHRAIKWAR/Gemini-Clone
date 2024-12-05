@@ -17,12 +17,19 @@ const ContextProvider = (props) => {
     }, 75 * index);
   };
 
-  const onSent = async () => {
+  const onSent = async (prompt) => {
     setResultData("");
     setLoading(true);
     setShowResult(true);
-    setRecentPromp(input);
-    const response = await run(input);
+    let response = "";
+    if (prompt !== undefined) {
+      response = await run(prompt);
+      setRecentPromp(prompt);
+    } else {
+      setPrevPrompt((prev) => [...prev, input]);
+      setRecentPromp(input);
+      response = await run(input);
+    }
     let responseArray = response.split("**");
     let newResponse = "";
     for (let i = 0; i < responseArray.length; i++) {

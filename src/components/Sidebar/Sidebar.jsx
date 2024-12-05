@@ -1,10 +1,18 @@
 // import React from 'react'
 import "./Sidebar.css";
 import { assets } from "../../assets/assets";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Context } from "../../context/Context";
 
 const Sidebar = () => {
   const [expanded, setExpanded] = useState(false);
+  const { onSent, prevPrompt, setRecentPromp } = useContext(Context);
+
+  const loadPrompt = async (prompt) => {
+    setRecentPromp(prompt);
+    onSent(prompt);
+  };
+
   function isExpanded() {
     setExpanded((preVal) => {
       return (preVal = !preVal);
@@ -27,10 +35,14 @@ const Sidebar = () => {
         {expanded ? (
           <div className="recent">
             <p className="recent-title">Recent chat</p>
-            <div className="recent-entry">
-              <img src={assets.message_icon} alt="" />
-              <p>Recent entry</p>
-            </div>
+            {prevPrompt.map((item, index) => {
+              return (
+                <div onClick={()=>loadPrompt(item)} className="recent-entry">
+                  <img src={assets.message_icon} alt="" />
+                  <p>{item.slice(0, 18)}...</p>
+                </div>
+              );
+            })}
           </div>
         ) : null}
       </div>
