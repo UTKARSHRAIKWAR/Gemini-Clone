@@ -12,11 +12,12 @@ const Main = () => {
     resultData,
     setInput,
     input,
+    newChat,
   } = useContext(Context);
   return (
     <div className="main">
-      <div className="nav">
-        <p>dev. gpt</p>
+      <div onClick={newChat} className="nav">
+        <p>Gemini</p>
         <img src={assets.user_icon} alt="" />
       </div>
       <div className="main-container">
@@ -24,7 +25,7 @@ const Main = () => {
           <>
             <div className="greet">
               <p>
-                <span>Hello, Utkarsh.</span>
+                <span>Hello, Dev.</span>
               </p>
               <p>How can I help you today ?</p>
             </div>
@@ -85,13 +86,15 @@ const Main = () => {
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              <img
-                onClick={() => {
-                  onSent();
-                }}
-                src={assets.send_icon}
-                alt=""
-              />
+              {input ? (
+                <img
+                  onClick={() => {
+                    onSent();
+                  }}
+                  src={assets.send_icon}
+                  alt=""
+                />
+              ) : null}
             </div>
           </div>
           <div className="bottom-info">
