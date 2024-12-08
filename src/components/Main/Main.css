@@ -210,4 +210,8 @@
     .main .card {
         height: 100px;
     }
+
+    .search-box input {
+        font-size: 12px;
+    }
 }
