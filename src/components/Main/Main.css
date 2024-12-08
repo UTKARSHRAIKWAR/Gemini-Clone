@@ -202,4 +202,12 @@
     .search-box div {
         gap: 5px;
     }
+
+    .main .cards {
+        /* display: none; */
+    }
+
+    .main .card {
+        height: 100px;
+    }
 }
