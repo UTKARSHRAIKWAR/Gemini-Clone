@@ -211,7 +211,12 @@
         height: 100px;
     }
 
+    .main .greet {
+        font-size: 36px;
+    }
+
     .search-box input {
-        font-size: 12px;
+
+        font-size: 14px;
     }
 }
