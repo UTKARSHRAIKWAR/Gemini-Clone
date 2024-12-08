@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 4211eb31ef26c5a8c933ea0eeb67cc0183a65d85
 import {
   GoogleGenerativeAI,
   HarmCategory,
